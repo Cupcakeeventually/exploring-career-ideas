@@ -177,11 +177,29 @@ export const checkAllInputsForOffensiveContent = (answers: any): boolean => {
     if (typeof input === 'string' && containsOffensiveLanguage(input)) {
       return true;
     }
+    
+    // Check for prompt injection attempts
+    if (typeof input === 'string') {
+      const injectionCheck = detectPromptInjection(input);
+      if (injectionCheck.isInjection) {
+        console.warn(`Prompt injection detected: ${injectionCheck.reason}`);
+        return true;
+      }
+    }
   }
 
   // Check array inputs (priorities)
   if (typeof answers.priorities === 'string' && containsOffensiveLanguage(answers.priorities)) {
     return true;
+  }
+  
+  // Check priorities for prompt injection
+  if (typeof answers.priorities === 'string') {
+    const injectionCheck = detectPromptInjection(answers.priorities);
+    if (injectionCheck.isInjection) {
+      console.warn(`Prompt injection detected in priorities: ${injectionCheck.reason}`);
+      return true;
+    }
   }
 
   return false;

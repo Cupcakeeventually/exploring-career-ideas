@@ -30,7 +30,30 @@ const validateInput = (value: any, maxLength: number = 1000): boolean => {
     /javascript:/i,
     /on\w+\s*=/i,
     /data:text\/html/i,
-    /vbscript:/i
+    /vbscript:/i,
+    // Enhanced prompt injection patterns
+    /ignore\s+(previous|all|the)\s+(instructions?|prompts?|rules?)/i,
+    /forget\s+(everything|all|previous)\s+(instructions?|prompts?|rules?)/i,
+    /system\s+prompt/i,
+    /act\s+as\s+(a\s+)?(?!career|guidance|counselor|adviser)/i,
+    /pretend\s+to\s+be\s+(?!a\s+career|guidance|counselor|adviser)/i,
+    /you\s+are\s+now\s+(?!a\s+career|guidance|counselor|adviser)/i,
+    /jailbreak/i,
+    /dan\s+mode/i,
+    /developer\s+mode/i,
+    /bypass\s+(safety|security|filters?|restrictions?)/i,
+    /override\s+(instructions?|prompts?|rules?|safety)/i,
+    /reveal\s+(your|the)\s+(prompt|instructions?|system)/i,
+    /show\s+me\s+(your|the)\s+(prompt|instructions?|system)/i,
+    /roleplay\s+as\s+(?!career|guidance)/i,
+    /simulate\s+(?!career|job|work)/i,
+    /\\n\\n/,
+    /\*\*\*\s*system\s*\*\*\*/i,
+    /\[system\]/i,
+    /assistant:/i,
+    /human:/i,
+    /user:/i,
+    /###\s*instruction/i
   ]
   
   if (suspiciousPatterns.some(pattern => pattern.test(value))) {
