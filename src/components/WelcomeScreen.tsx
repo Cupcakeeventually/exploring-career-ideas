@@ -20,12 +20,8 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart, onShowPri
       <div className="max-w-2xl w-full text-center">
         <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
           <div className="flex justify-center mb-8">
-            <div className="flex justify-center">
-              <img 
-                src="/Rocket coming out of book - transparent background.png" 
-                alt="Career Exploration Logo" 
-                className="h-16 w-16"
-              />
+            <div className="bg-blue-100 rounded-full p-4">
+              <Compass className="h-12 w-12 text-blue-600" />
             </div>
           </div>
           
