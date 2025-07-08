@@ -64,8 +64,8 @@ function App() {
       return;
     }
 
-    // Show warning if only 1 request remaining
-    if (rateLimitCheck.remainingRequests === 1) {
+    // Show warning if only 2 requests remaining
+    if (rateLimitCheck.remainingRequests <= 2) {
       setRateLimitInfo({
         remainingRequests: rateLimitCheck.remainingRequests,
         resetTime: rateLimitCheck.resetTime

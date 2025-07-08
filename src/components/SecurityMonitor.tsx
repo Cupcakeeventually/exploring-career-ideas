@@ -174,7 +174,7 @@ export const SecurityMonitor: React.FC<SecurityMonitorProps> = ({ isVisible, onC
             <h4 className="font-semibold text-gray-900 mb-2">Active Security Measures</h4>
             <ul className="text-sm text-gray-700 space-y-1">
               <li>✅ Rate limiting (5 requests per 15 minutes)</li>
-              <li>✅ Session-based rate limiting (3 requests per session)</li>
+              <li>✅ Session-based rate limiting (6 requests per session)</li>
               <li>✅ Input validation and sanitization</li>
               <li>✅ Content Security Policy headers</li>
               <li>✅ Request size limits (50KB max)</li>
