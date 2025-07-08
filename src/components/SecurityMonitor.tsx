@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AlertTriangle, Shield, Activity } from 'lucide-react';
+import { sessionRateLimiter } from '../utils/sessionManager';
 
 interface SecurityEvent {
   timestamp: string;
@@ -17,7 +18,12 @@ export const SecurityMonitor: React.FC<SecurityMonitorProps> = ({ isVisible, onC
   const [stats, setStats] = useState({
     totalRequests: 0,
     blockedRequests: 0,
-    successfulRequests: 0
+    successfulRequests: 0,
+    sessionStats: {
+      totalSessions: 0,
+      activeSessions: 0,
+      blockedSessions: 0
+    }
   });
 
   useEffect(() => {
@@ -46,7 +52,8 @@ export const SecurityMonitor: React.FC<SecurityMonitorProps> = ({ isVisible, onC
       setStats({
         totalRequests: 156,
         blockedRequests: 12,
-        successfulRequests: 144
+        successfulRequests: 144,
+        sessionStats: sessionRateLimiter.getSessionStats()
       });
     }
   }, [isVisible]);
@@ -103,6 +110,17 @@ export const SecurityMonitor: React.FC<SecurityMonitorProps> = ({ isVisible, onC
 
           {/* Security Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+              <div className="flex items-center space-x-2">
+                <Activity className="h-5 w-5 text-purple-600" />
+                <span className="font-semibold text-purple-900">Active Sessions</span>
+              </div>
+              <p className="text-2xl font-bold text-purple-800 mt-2">{stats.sessionStats.activeSessions}</p>
+              <p className="text-sm text-purple-700">
+                {stats.sessionStats.blockedSessions} blocked
+              </p>
+            </div>
+            
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
               <div className="flex items-center space-x-2">
                 <Activity className="h-5 w-5 text-blue-600" />
@@ -156,6 +174,7 @@ export const SecurityMonitor: React.FC<SecurityMonitorProps> = ({ isVisible, onC
             <h4 className="font-semibold text-gray-900 mb-2">Active Security Measures</h4>
             <ul className="text-sm text-gray-700 space-y-1">
               <li>✅ Rate limiting (5 requests per 15 minutes)</li>
+              <li>✅ Session-based rate limiting (3 requests per session)</li>
               <li>✅ Input validation and sanitization</li>
               <li>✅ Content Security Policy headers</li>
               <li>✅ Request size limits (50KB max)</li>

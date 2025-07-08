@@ -8,6 +8,8 @@ import { CareerQuestions, Career, ErrorState } from './types';
 import { generateCareerSuggestions } from './services/careerService';
 import { checkAllInputsForOffensiveContent } from './utils/contentFilter';
 import { validateRequestSize } from './utils/contentFilter';
+import { sessionRateLimiter } from './utils/sessionManager';
+import { RateLimitWarning } from './components/RateLimitWarning';
 
 type Screen = 'welcome' | 'questionnaire' | 'results' | 'error' | 'offensive-content' | 'privacy';
 
@@ -16,6 +18,12 @@ function App() {
   const [careerResults, setCareerResults] = useState<Career[]>([]);
   const [error, setError] = useState<ErrorState | null>(null);
   const [showPrivacyNotice, setShowPrivacyNotice] = useState(false);
+  const [showRateLimitWarning, setShowRateLimitWarning] = useState(false);
+  const [rateLimitInfo, setRateLimitInfo] = useState<{
+    remainingRequests: number;
+    resetTime: number;
+    reason?: string;
+  } | null>(null);
 
   // Helper function to scroll to top when changing screens
   const scrollToTop = () => {
@@ -42,6 +50,30 @@ function App() {
   };
 
   const handleComplete = async (answers: CareerQuestions) => {
+    // Check session-based rate limiting first
+    const rateLimitCheck = sessionRateLimiter.checkRateLimit();
+    
+    if (!rateLimitCheck.allowed) {
+      setRateLimitInfo({
+        remainingRequests: rateLimitCheck.remainingRequests,
+        resetTime: rateLimitCheck.resetTime,
+        reason: rateLimitCheck.reason
+      });
+      setShowRateLimitWarning(true);
+      scrollToTop();
+      return;
+    }
+
+    // Show warning if only 1 request remaining
+    if (rateLimitCheck.remainingRequests === 1) {
+      setRateLimitInfo({
+        remainingRequests: rateLimitCheck.remainingRequests,
+        resetTime: rateLimitCheck.resetTime
+      });
+      setShowRateLimitWarning(true);
+      // Don't return here - let user proceed but show warning
+    }
+
     // Check for offensive content first
     if (checkAllInputsForOffensiveContent(answers)) {
       setCurrentScreen('offensive-content');
@@ -62,6 +94,9 @@ function App() {
     }
 
     try {
+      // Record the request attempt
+      sessionRateLimiter.recordRequest();
+      
       const llmResponse = await generateCareerSuggestions(answers);
       
       // Convert LLM response to Career format
@@ -120,10 +155,22 @@ function App() {
     scrollToTop();
   };
 
+  const handleRateLimitClose = () => {
+    setShowRateLimitWarning(false);
+    setRateLimitInfo(null);
+  };
+
   return (
     <div className="min-h-screen">
       {showPrivacyNotice && (
         <PrivacyNotice onClose={handleClosePrivacy} />
+      )}
+      {showRateLimitWarning && rateLimitInfo && (
+        <RateLimitWarning 
+          remainingRequests={rateLimitInfo.remainingRequests}
+          resetTime={rateLimitInfo.resetTime}
+          onClose={handleRateLimitClose}
+        />
       )}
       {currentScreen === 'welcome' && (
         <WelcomeScreen onStart={handleStart} onShowPrivacy={handleShowPrivacy} />
