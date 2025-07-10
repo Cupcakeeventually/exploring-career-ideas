@@ -350,7 +350,7 @@ export const QuestionnaireScreen: React.FC<QuestionnaireScreenProps> = ({ onBack
 
           {/* Helper text for hybrid questions */}
           {currentQ.type === 'hybrid' && (
-            <div className="mb-6 bg-green-50 border border-green-200 rounded-lg p-3">
+            <div className="mb-4 bg-green-50 border border-green-200 rounded-lg p-3">
               <p className="text-green-800 text-sm flex items-start space-x-2">
                 <span className="text-lg">💡</span>
                 <span>
@@ -381,6 +381,7 @@ export const QuestionnaireScreen: React.FC<QuestionnaireScreenProps> = ({ onBack
           )}
 
           {/* Answer input */}
+          <div className="mb-8">
             {currentQ.type === 'text' && (
               <input
                 type="text"
