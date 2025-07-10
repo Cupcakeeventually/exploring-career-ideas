@@ -348,6 +348,37 @@ export const QuestionnaireScreen: React.FC<QuestionnaireScreenProps> = ({ onBack
             </div>
           )}
 
+          {/* Helper text for hybrid questions */}
+          {currentQ.type === 'hybrid' && (
+            <div className="mb-4 bg-green-50 border border-green-200 rounded-lg p-3">
+              <p className="text-green-800 text-sm flex items-start space-x-2">
+                <span className="text-lg">💡</span>
+                <span>
+                  <strong>You can type your own answers or use the quick options below.</strong>
+                  {currentQ.id === 'subjects' && (
+                    <span className="block mt-1 text-green-700">
+                      e.g., "I'm really good at Maths and enjoy Creative Writing"
+                    </span>
+                  )}
+                  {currentQ.id === 'strengths' && (
+                    <span className="block mt-1 text-green-700">
+                      e.g., "I love problem-solving and working with data, plus I'm great at explaining things to others"
+                    </span>
+                  )}
+                  {currentQ.id === 'weaknesses' && (
+                    <span className="block mt-1 text-green-700">
+                      e.g., "I sometimes struggle with time management and find public speaking nerve-wracking"
+                    </span>
+                  )}
+                  {currentQ.id === 'priorities' && (
+                    <span className="block mt-1 text-green-700">
+                      e.g., "I want a job where I can help people and have good work-life balance"
+                    </span>
+                  )}
+                </span>
+              </p>
+            </div>
+          )}
 
           {/* Answer input */}
           <div className="mb-8">
@@ -405,37 +436,6 @@ export const QuestionnaireScreen: React.FC<QuestionnaireScreenProps> = ({ onBack
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg resize-none"
                   />
                 )}
-                
-                {/* Helper text for hybrid questions - positioned after input, before buttons */}
-                <div className="mt-4 bg-green-50 border border-green-200 rounded-lg p-3">
-                  <p className="text-green-800 text-sm flex items-start space-x-2">
-                    <span className="text-lg">💡</span>
-                    <span>
-                      <strong>You can type your own answers or use the quick options below.</strong>
-                      {currentQ.id === 'subjects' && (
-                        <span className="block mt-1 text-green-700">
-                          e.g., "I'm really good at Maths and enjoy Creative Writing"
-                        </span>
-                      )}
-                      {currentQ.id === 'strengths' && (
-                        <span className="block mt-1 text-green-700">
-                          e.g., "I love problem-solving and working with data, plus I'm great at explaining things to others"
-                        </span>
-                      )}
-                      {currentQ.id === 'weaknesses' && (
-                        <span className="block mt-1 text-green-700">
-                          e.g., "I sometimes struggle with time management and find public speaking nerve-wracking"
-                        </span>
-                      )}
-                      {currentQ.id === 'priorities' && (
-                        <span className="block mt-1 text-green-700">
-                          e.g., "I want a job where I can help people and have good work-life balance"
-                        </span>
-                      )}
-                    </span>
-                  </p>
-                </div>
-                
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                   {currentQ.options?.map((option) => {
                     let isSelected = false;
