@@ -897,11 +897,6 @@ serve(async (req) => {
     const prompt = `
 You are a career guidance counsellor helping a high school student explore career options. Based on their responses below, you MUST suggest exactly 20 careers.
 
-CRITICAL WEIGHTING INSTRUCTION:
-Give the HIGHEST priority and weight to the information provided in the "Additional Information" section. This should be the primary factor in determining career matches. The other responses (subjects, strengths, challenges, priorities) should be used as supporting information, but the Additional Information should drive the core recommendations.
-
-If the Additional Information section contains specific career interests, study plans, work experience, hobbies, or aspirations, these should heavily influence your suggestions. Even if other sections suggest different directions, prioritize what the student has specifically shared in the Additional Information.
-
 SPECIAL INSTRUCTIONS
 If the student mentions interest in a specific career, include closely related roles that they may not have considered. Only do this if they align with the user's skills and interests, and make sure to include the user's original area of interest unless there's a strong reason not to. For example, if the user is interested in a career that exists in the NHS (Health), you might include other potential NHS Health careers.  
 
