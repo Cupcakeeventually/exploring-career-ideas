@@ -931,15 +931,13 @@ Student's Responses:
 - Strengths: ${Array.isArray(answers.strengths) ? answers.strengths.join(', ') : answers.strengths || 'Not specified'}
 - Things they find challenging: ${Array.isArray(answers.weaknesses) ? answers.weaknesses.join(', ') : answers.weaknesses || 'Not specified'}
 - Career priorities: ${Array.isArray(answers.priorities) ? answers.priorities.join(', ') : answers.priorities || 'Not specified'}
-- Additional information (HIGHEST PRIORITY): ${answers.additionalInfo || 'None provided'}
+- Additional information: ${answers.additionalInfo || 'None provided'}
 
 For each career suggestion, provide only:
 1. Job title (MUST match exactly from the list above)
 2. Match score (0-100)
 
 Return the response as a JSON object with a "careers" array containing exactly 20 career objects, ordered by match score (highest first). 
-
-Remember: The Additional Information section should be the PRIMARY driver of your recommendations. Weight it more heavily than all other factors combined.
 
 CRITICAL: Your response MUST contain exactly 20 careers. Count them before responding.
 
