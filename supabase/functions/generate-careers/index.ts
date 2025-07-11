@@ -895,7 +895,7 @@ serve(async (req) => {
     ];
 
     const prompt = `
-You are a career guidance counsellor helping a high school student explore career options. Based on their responses below, you MUST suggest exactly 20 careers.
+You are a careers adviser helping a high school student explore career options. Based on their responses below, you MUST suggest exactly 20 careers.
 
 SPECIAL INSTRUCTIONS
 If the student mentions interest in a specific career, include closely related roles that they may not have considered. Only do this if they align with the user's skills and interests, and make sure to include the user's original area of interest unless there's a strong reason not to. For example, if the user is interested in a career that exists in the NHS (Health), you might include other potential NHS Health careers.  
