@@ -906,6 +906,9 @@ SPECIAL INSTRUCTIONS FOR MILITARY AND EMERGENCY SERVICES:
 Only include these adjacent roles if they align with the user's skills, interests, or values, and make sure to also include the user's original area of interest unless there's a strong reason not to.
 - This ensures they see the full range of opportunities available in public service and uniformed careers
 
+SPECIAL INSTRUCTIONS FOR TEACHING
+-If you decide that one of your 20 results should be secondary teaching for a subject not listed, output 'Teacher - Secondary School' as that result. 
+
 SPECIAL INSTRUCTIONS FOR TRADES AND SKILLED CRAFTS:
 - If the student mentions interest in trades, skilled work, manual work, hands-on work, building, construction, or similar terms, you should consider suggesting careers across MULTIPLE trade areas, not just one trade
 - Include options from various trade categories such as:
