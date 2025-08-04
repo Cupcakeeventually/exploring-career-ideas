@@ -907,7 +907,7 @@ Only include these adjacent roles if they align with the user's skills, interest
 - This ensures they see the full range of opportunities available in public service and uniformed careers
 
 SPECIAL INSTRUCTIONS FOR TEACHING
--If you decide that one of your 20 results should be secondary teaching for a subject not listed, output 'Teacher - Secondary School' as that result. 
+-If you decide that one of your 20 results should be secondary teaching for a subject not listed, output 'Teacher - Secondary School' as that result. Do not list 'Teacher - Secondary School - Psycholog'y' as that is not a job on the comprehensive list. 
 
 SPECIAL INSTRUCTIONS FOR TRADES AND SKILLED CRAFTS:
 - If the student mentions interest in trades, skilled work, manual work, hands-on work, building, construction, or similar terms, you should consider suggesting careers across MULTIPLE trade areas, not just one trade
