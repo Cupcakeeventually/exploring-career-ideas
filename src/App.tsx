@@ -128,8 +128,8 @@ function App() {
       } else {
         setError({
           title: 'Career Analysis Failed',
-          message: 'We encountered an issue while analyzing your responses. This could be due to a temporary service outage or connectivity issue.',
-          suggestion: 'Please try again in a few moments. If the problem persists, check your internet connection.'
+          message: 'We encountered an issue while analyzing your responses. This could be due to a temporary service outage, connectivity issue, or your school network may be blocking AI-powered tools.',
+          suggestion: 'Please try again in a few moments. If the problem persists, check your internet connection or try using a different network (such as mobile data or home Wi-Fi).'
         });
       }
       setCurrentScreen('error');
