@@ -25,6 +25,8 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart, onShowPri
                 src="/Rocket coming out of book - Transparent background.png" 
                 alt="Career Exploration Logo" 
                 className="h-24 w-24 object-contain"
+                loading="eager"
+                decoding="sync"
               />
             </div>
           </div>

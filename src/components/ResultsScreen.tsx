@@ -38,6 +38,8 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({ onBack, onRestart,
                 src="/Rocket coming out of book - Transparent background.png" 
                 alt="Career Exploration Logo" 
                 className="h-20 w-20 object-contain"
+                loading="eager"
+                decoding="sync"
               />
             </div>
             
