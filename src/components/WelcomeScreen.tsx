@@ -47,6 +47,12 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart, onShowPri
             </p>
           </div>
           
+          <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-8">
+            <p className="text-orange-800 text-sm font-medium">
+              ⚠️ <strong>Note:</strong> Some school networks block the results page because the tool uses AI. We recommend Careers Advisers do a quick test run on the school's Wi-Fi before using it.
+            </p>
+          </div>
+          
           <div className="bg-blue-50 rounded-lg p-6 mb-8">
             <h2 className="text-xl font-semibold text-blue-900 mb-4">What to expect:</h2>
             <div className="grid md:grid-cols-3 gap-4 text-sm text-blue-800">
