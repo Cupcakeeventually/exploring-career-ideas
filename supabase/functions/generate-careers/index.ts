@@ -239,7 +239,6 @@ serve(async (req) => {
       "Actor",
       "Actuary",
       "Acupuncturist",
-      "Administrative officer (courts)",
       "Administrator",
       "Advertising account executive",
       "Advertising account planner",
