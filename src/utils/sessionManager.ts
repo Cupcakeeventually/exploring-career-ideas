@@ -10,7 +10,7 @@ interface SessionData {
 
 class SessionRateLimiter {
   private sessions = new Map<string, SessionData>();
-  private readonly maxRequests = 6; // Max requests per session
+  private readonly maxRequests = 18; // Max requests per session (tripled for user testing)
   private readonly windowMs = 15 * 60 * 1000; // 15 minutes
   private readonly blockDurationMs = 30 * 60 * 1000; // 30 minutes block
   private readonly cleanupIntervalMs = 60 * 60 * 1000; // 1 hour cleanup

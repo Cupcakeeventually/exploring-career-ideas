@@ -11,7 +11,7 @@ const logSecurityEvent = (event: string, details: any, clientIP: string) => {
 
 // Rate limiting storage (in-memory for this example)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>()
-const RATE_LIMIT_REQUESTS = 60 // Max requests per window (suitable for classroom use)
+const RATE_LIMIT_REQUESTS = 180 // Max requests per window (tripled for user testing)
 const RATE_LIMIT_WINDOW = 15 * 60 * 1000 // 15 minutes in milliseconds
 
 // Request size limits (in bytes)
